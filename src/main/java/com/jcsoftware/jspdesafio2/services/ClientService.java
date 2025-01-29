@@ -17,7 +17,9 @@ public class ClientService {
 	private ClientRepository repository;
 	
 	public Page<ClientDTO> findAll(Pageable pageable) {
+		Page<Client> clients = repository.findAll(pageable);
 		
+		return clients.map(x -> new ClientDTO(x));
 	}
 	
 	@Transactional(readOnly = true)

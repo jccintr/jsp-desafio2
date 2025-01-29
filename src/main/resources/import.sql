@@ -1,0 +1,15 @@
+INSERT INTO clients (name, cpf, income, birth_date,children) VALUES ('Joyce Towers', '048.688.906-89', 1200.0,'1980-10-23',2);
+INSERT INTO clients (name, cpf, income, birth_date,children) VALUES ('Frank Black', '012.362.906-89', 5500.0,'1999-12-31',1);
+INSERT INTO clients (name, cpf, income, birth_date,children) VALUES ('Fox Mulder', '986.625.000-63', 6300.0,'1993-01-09',0);
+INSERT INTO clients (name, cpf, income, birth_date,children) VALUES ('Walter Skinner', '111.025.012-12', 3400.0,'1989-04-05',1);
+INSERT INTO clients (name, cpf, income, birth_date,children) VALUES ('Peter Watts', '053.325.659-02', 8252.0,'1970-05-28',3);
+INSERT INTO clients (name, cpf, income, birth_date,children) VALUES ('Lucy Butler', '666.666.001-00', 666.0,'1985-06-06',0);
+INSERT INTO clients (name, cpf, income, birth_date,children) VALUES ('Bob Bletcher', '325.501.659-75', 4400.0,'1974-03-14',1);
+INSERT INTO clients (name, cpf, income, birth_date,children) VALUES ('Emma Hollis', '665.528.332-02', 2225.0,'2001-01-01',0);
+INSERT INTO clients (name, cpf, income, birth_date,children) VALUES ('Andy Maclaren', '005.865.569-87', 720.0,'1983-07-15',1);
+INSERT INTO clients (name, cpf, income, birth_date,children) VALUES ('Lara Means', '362.025.958-00', 3600.0,'1996-02-20',0);
+INSERT INTO clients (name, cpf, income, birth_date,children) VALUES ('Bob Gielbelhouse', '111.222.333-44', 2500.0,'1983-09-14',1);
+INSERT INTO clients (name, cpf, income, birth_date,children) VALUES ('Monica Reyes', '013.468.962-00', 6600.0,'1976-04-05',2);
+INSERT INTO clients (name, cpf, income, birth_date,children) VALUES ('John Doggett', '032.659.254-88', 3326.0,'1986-02-26',1);
+INSERT INTO clients (name, cpf, income, birth_date,children) VALUES ('Russel Hammond', '032.632.444-00', 3652.0,'1996-01-31',0);
+INSERT INTO clients (name, cpf, income, birth_date,children) VALUES ('Penny Lane', '000.999.546-44', 3425.0,'2002-04-17',0);

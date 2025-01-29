@@ -30,6 +30,9 @@ public class ClientController {
 	@GetMapping
 	public ResponseEntity<Page<ClientDTO>> findAll(Pageable pageable){
 		
+		  Page<ClientDTO> clients = service.findAll(pageable);
+	      return ResponseEntity.ok().body(clients);
+		
 	}
 	
 	@GetMapping(value="/{id}")
