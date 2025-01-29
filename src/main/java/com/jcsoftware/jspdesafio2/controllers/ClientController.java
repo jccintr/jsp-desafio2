@@ -38,6 +38,9 @@ public class ClientController {
 	@GetMapping(value="/{id}")
 	public ResponseEntity<ClientDTO> findById(@PathVariable Long id){
 		
+		ClientDTO clientDTO = service.findById(id);
+		return ResponseEntity.ok().body(clientDTO);
+		
 	}
 	
 	@PostMapping
