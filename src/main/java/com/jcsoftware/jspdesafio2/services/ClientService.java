@@ -40,6 +40,12 @@ public class ClientService {
 	@Transactional
 	public ClientDTO insert(ClientDTO dto) {
 		
+		Client newClient = new Client();
+		BeanUtils.copyProperties(dto, newClient);
+		newClient = repository.save(newClient);
+
+		return new ClientDTO(newClient);
+		
 	}
 	
 	@Transactional
