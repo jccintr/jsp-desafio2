@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.jcsoftware.jspdesafio2.dtos.ClientDTO;
 import com.jcsoftware.jspdesafio2.entities.Client;
 import com.jcsoftware.jspdesafio2.repositories.ClientRepository;
+import com.jcsoftware.jspdesafio2.services.exceptions.IntegrityViolationException;
 import com.jcsoftware.jspdesafio2.services.exceptions.ResourceNotFoundException;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -65,6 +67,19 @@ public class ClientService {
 	}
 	
 	public void delete(Long id) {
+		
+		try {
+
+			if (repository.existsById(id)) {
+				repository.deleteById(id);
+			} else {
+				throw (new ResourceNotFoundException(id));
+			}
+		}
+
+		catch (DataIntegrityViolationException e) {
+			throw (new IntegrityViolationException(id));
+		}
 		
 	}
 	

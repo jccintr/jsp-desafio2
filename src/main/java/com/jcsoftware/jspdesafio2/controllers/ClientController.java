@@ -21,53 +21,53 @@ import com.jcsoftware.jspdesafio2.services.ClientService;
 
 import jakarta.validation.Valid;
 
-
-
 @RestController
 @RequestMapping(value = "/clients")
 public class ClientController {
-	
+
 	@Autowired
 	private ClientService service;
-	
+
 	@GetMapping
-	public ResponseEntity<Page<ClientDTO>> findAll(Pageable pageable){
-		
-		  Page<ClientDTO> clients = service.findAll(pageable);
-	      return ResponseEntity.ok().body(clients);
-		
+	public ResponseEntity<Page<ClientDTO>> findAll(Pageable pageable) {
+
+		Page<ClientDTO> clients = service.findAll(pageable);
+		return ResponseEntity.ok().body(clients);
+
 	}
-	
-	@GetMapping(value="/{id}")
-	public ResponseEntity<ClientDTO> findById(@PathVariable Long id){
-		
+
+	@GetMapping(value = "/{id}")
+	public ResponseEntity<ClientDTO> findById(@PathVariable Long id) {
+
 		ClientDTO clientDTO = service.findById(id);
 		return ResponseEntity.ok().body(clientDTO);
-		
+
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<ClientDTO> insert(@Valid @RequestBody ClientDTO dto){
-		
+	public ResponseEntity<ClientDTO> insert(@Valid @RequestBody ClientDTO dto) {
+
 		ClientDTO newClientDTO = service.insert(dto);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newClientDTO.getId()).toUri();
-		
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newClientDTO.getId())
+				.toUri();
+
 		return ResponseEntity.created(uri).body(newClientDTO);
-		
+
 	}
-	
-	@PutMapping(value="/{id}")
-	public ResponseEntity<ClientDTO> update(@PathVariable Long id,@Valid @RequestBody ClientDTO dto){
-		
-		var  client = service.update(id, dto);
+
+	@PutMapping(value = "/{id}")
+	public ResponseEntity<ClientDTO> update(@PathVariable Long id, @Valid @RequestBody ClientDTO dto) {
+
+		var client = service.update(id, dto);
 		return ResponseEntity.ok().body(client);
 	}
-	
-	@DeleteMapping(value="/{id}")
-	public ResponseEntity<ClientDTO> delete(@PathVariable Long id){
-		
+
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<ClientDTO> delete(@PathVariable Long id) {
+
+		service.delete(id);
+
+		return ResponseEntity.noContent().build();
 	}
-		
-	
 
 }
