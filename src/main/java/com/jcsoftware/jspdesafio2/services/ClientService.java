@@ -14,6 +14,8 @@ import com.jcsoftware.jspdesafio2.entities.Client;
 import com.jcsoftware.jspdesafio2.repositories.ClientRepository;
 import com.jcsoftware.jspdesafio2.services.exceptions.ResourceNotFoundException;
 
+import jakarta.persistence.EntityNotFoundException;
+
 @Service
 public class ClientService {
 	
@@ -51,6 +53,15 @@ public class ClientService {
 	@Transactional
 	public ClientDTO update(Long id, ClientDTO dto) {
 		
+		try {
+			Client client = repository.getReferenceById(id);
+			updateData(dto, client);
+			client = repository.save(client);
+			return new ClientDTO(client);
+		} catch (EntityNotFoundException e) {
+			throw (new ResourceNotFoundException(id));
+		}
+		
 	}
 	
 	public void delete(Long id) {
@@ -59,6 +70,11 @@ public class ClientService {
 	
 	private void updateData(ClientDTO source, Client target) {
 		
+		target.setName(source.getName());
+		target.setCpf(source.getCpf());
+		target.setIncome(source.getIncome());
+		target.setBirthDate(source.getBirthDate());
+		target.setChildren(source.getChildren());
 	}
 
 }
